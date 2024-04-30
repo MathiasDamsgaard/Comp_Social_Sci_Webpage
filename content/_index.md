@@ -4,36 +4,12 @@ layout: single
 next: data-description
 ---
 
-Donec posuere justo at risus [efficitur convallis](#). Donec enim nibh, aliquet vel risus id, tincidunt consectetur felis. Proin porttitor odio a orci accumsan bibendum id at risus. Sed a posuere odio, ac lobortis augue. Maecenas aliquet ipsum vel libero dignissim, non aliquet justo eleifend. Fusce mollis, ante eget tincidunt imperdiet, mi ligula venenatis ex, ut pulvinar nunc ipsum tempus eros. Aliquam erat volutpat. Sed id _iaculis arcu_, sit amet varius libero. Etiam quis nisl pretium, eleifend quam nec, rutrum sapien. **Donec rutrum accumsan orci.**
+This project works to investigate a network constructed of _python packages' dependencies_ on each other. This is based on the available packages on [python package index (pypi)](https://pypi.org/). Inspiration of this project idea comes from seeing an older dataset on [Netzschleuder](https://networks.skewed.de/net/python_dependency) made by Kevin Gullikson. His [original blogpost](https://kgullikson88.github.io/blog/pypi-analysis.html) is from 2016, and will therefore be used as a baseline for comparing the networks on a timescale.
+<img src="/images/pypi.svg" width="200">
 
+The resulting network will be analysed based on theory for a directed network, where a package point to another package if the first package is dependent on the second one. This information was collected from the individual packages githubs. Further information on the data acquisition can be found in the data tab.
 
-## Math formula
+This research was conducted for investigating how the package library in Python has evolved over the years and further investigate which packages seem to be the hubs of all other packages. Creating libraries is a big part of programming to help make functions easier to use across files and users, and thus the goal with this website is to shine light on the insights gained when looking at the connections between the libraries and the groups these create.
+By also analysing the text available in README files, understand of how programmers formulate themselves when writing documentation for their code, and the variation across different groups can be visualized. This is the main points of the research on this website, and the authors hope you find the reading enjoyable.
 
-
-$$ x^n + y^n = z^n $$
-
-## Code chunk
-
-```
-import pandas as pd
-
-df = pd.DataFrame()
-```
-
-Sed id orci ullamcorper, commodo sapien in, scelerisque nunc. Duis posuere sed nisl in gravida. Pellentesque rutrum justo ut mi tempus dignissim. Ut pulvinar quis urna ut molestie. Pellentesque nec arcu metus. Vivamus non rutrum magna. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-
-![](https://source.unsplash.com/random/?Copenhagen)
-
-Phasellus viverra tellus viverra purus placerat, et lacinia mauris tristique. Nam semper venenatis lorem, nec ullamcorper tortor dignissim eget. Etiam non ipsum sed neque pharetra ullamcorper. Praesent ultrices ipsum varius dictum lacinia. Nulla placerat magna augue, volutpat rutrum nulla finibus sed. Phasellus maximus mi sit amet risus mattis, porta rhoncus elit dictum. Donec vel viverra lectus, vitae elementum arcu. Quisque quis molestie elit. Cras eget tellus vitae risus fermentum bibendum vitae ac turpis. Praesent mi eros, scelerisque sit amet sem at, hendrerit accumsan ligula.
-
-> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec mauris aliquet, convallis ligula vel, mollis est. Fusce accumsan massa vel lectus dapibus, at vehicula elit auctor.
-
-| Column 1  | Column 2  |  Column 3 |
-|---|---|---|
-| 1 | 4 | 7 |
-| 2 | 5 | 8 |
-| 3 | 6 | 9 |
-
-## [Explainer Notebook](explainer-notebook.html)
-
-Aenean non augue vulputate, bibendum ligula ac, euismod arcu. Proin consequat, urna at lobortis sodales, ligula nulla molestie dolor, et interdum nulla arcu eu lacus. Aenean maximus mi vel augue blandit, quis vehicula libero egestas. In mollis nibh in turpis sodales, eget luctus sem pretium. Integer lobortis diam vel nisi laoreet, ut condimentum risus ultrices. Praesent diam risus, imperdiet at lorem in, hendrerit auctor ex.
+Here is a link to a webbased visual representation of the [notebook](explainer-notebook.html), which contain all the relevant code along with clarifications and explanations on the workflow and decisions taken.
