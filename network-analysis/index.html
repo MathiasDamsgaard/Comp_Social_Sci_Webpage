@@ -97,6 +97,51 @@
           @apply mx-4;
         }
       }
-    </style></head><body><nav id=header class="fixed w-full z-10 top-0"><div id=progress class="h-1 z-20 top-0" style="background:linear-gradient(to right,#4dc0b5 var(--scroll),transparent 0)"></div><div class="w-full md:max-w-4xl mx-auto flex flex-wrap items-center justify-between mt-0 py-3"><div class=pl-4><a class="text-gray-900 text-base no-underline hover:no-underline font-extrabold text-xl" href=https://MathiasDamsgaard.github.io/Comp_Social_Sci_Webpage/>PyPi dependencies network</a></div><div class="block lg:hidden pr-4"><button id=nav-toggle class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-gray-900 hover:border-green-500 appearance-none focus:outline-none"><svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg></button></div><div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-gray-100 md:bg-transparent z-20" id=nav-content><ul class="list-reset lg:flex justify-end flex-1 items-center list-none px-0"><li><a class="inline-block py-2 px-4 text-gray-900 no-underline" href=../data-description>Data</a></li><li><a class="inline-block py-2 px-4 text-gray-900 no-underline" href=../network-analysis>Network</a></li><li><a class="inline-block py-2 px-4 text-gray-900 no-underline" href=../text-analysis>Text</a></li></ul></div></div></nav><div class="container w-full md:max-w-3xl mx-auto pt-20"><div class="w-full px-4 md:px-6 text-xl text-gray-800 leading-normal" style=font-family:Georgia,serif><div class=font-sans><h1 class="font-bold font-sans break-normal text-gray-900 pt-6 pb-2 text-3xl md:text-4xl">Network analysis</h1></div><p>The aim of our Network analysis was to find out if the Pypi network had any meaningfullnes in its structure, what the nature of the network is and if there&rsquo;s any significant nodes.</p><hr class="border-b-2 border-gray-400 mt-8 mx-4"><div class="font-sans flex justify-between content-center px-4 pb-12"><div class=text-left><p><a href=../data-description class="break-normal text-base md:text-sm text-green-500 font-bold no-underline hover:underline">&lt;
+    </style></head><body><nav id=header class="fixed w-full z-10 top-0"><div id=progress class="h-1 z-20 top-0" style="background:linear-gradient(to right,#4dc0b5 var(--scroll),transparent 0)"></div><div class="w-full md:max-w-4xl mx-auto flex flex-wrap items-center justify-between mt-0 py-3"><div class=pl-4><a class="text-gray-900 text-base no-underline hover:no-underline font-extrabold text-xl" href=https://MathiasDamsgaard.github.io/Comp_Social_Sci_Webpage/>PyPi dependencies network</a></div><div class="block lg:hidden pr-4"><button id=nav-toggle class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-gray-900 hover:border-green-500 appearance-none focus:outline-none"><svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg></button></div><div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-gray-100 md:bg-transparent z-20" id=nav-content><ul class="list-reset lg:flex justify-end flex-1 items-center list-none px-0"><li><a class="inline-block py-2 px-4 text-gray-900 no-underline" href=../data-description>Data</a></li><li><a class="inline-block py-2 px-4 text-gray-900 no-underline" href=../network-analysis>Network</a></li><li><a class="inline-block py-2 px-4 text-gray-900 no-underline" href=../text-analysis>Text</a></li></ul></div></div></nav><div class="container w-full md:max-w-3xl mx-auto pt-20"><div class="w-full px-4 md:px-6 text-xl text-gray-800 leading-normal" style=font-family:Georgia,serif><div class=font-sans><h1 class="font-bold font-sans break-normal text-gray-900 pt-6 pb-2 text-3xl md:text-4xl">Network analysis</h1></div><p>The aim of our Network analysis was to find out if the Pypi network had any meaningfullnes in its structure, what the nature of the network is and if there&rsquo;s any significant nodes.</p><p>As mentioned in the description of the data the network is directed where a package points to its dependency.</p><p>To investigate if the Pypi network has meaningfullness it is advisable to generate a set of randomized graphs with the same underlying in- and out-degrees of each individual node in the network. This is to make sure that the assortativity which can be found is not due to any structural feature. Therefore these rules were applied to the randomization.</p><ol><li>It should not have multilinks</li><li>It should not have self-loops</li><li>It should let the in- and out-degree stay the same during node swapping</li></ol><p>This randomization (which is also known as R-S randomization which is used to generate simple networks) was applied and 50 random graphs were generated.</p><p>The pseudocode is provided below:</p><pre tabindex=0><code>function degree_preserving_randomization( G ):
+    &#34;&#34;&#34;
+    Perform degree-preserving randomization of a directed graph.
+
+    Parameters:
+    - G: A directed graph.
+
+    Returns:
+    - G_rand: The degree-preserved randomized graph.
+
+    Prerequisites:
+    - The input graph G should be a directed graph.
+    - The graph G should have nodes and edges defined.
+    &#34;&#34;&#34;
+
+    # Create a copy of the graph
+    G_rand = copy(G)
+
+    # For each swap
+    for eahc edge in G_rand * 10:
+        # Select two sets of connected
+        idx1, idx2 = random.sample(G_rand.index, 2)
+        u, v = G_rand.edges[idx1]
+        x, y = G_rand.edges[idx2]
+
+        # Ensure distinct nodes
+        if len(set([u, v, x, y])) &lt; 4:
+            continue
+
+        # Ensure that the new edges do not exist
+        if x not in G_rand.neighbors(v) and y not in G_rand.neighbors(u):
+            # Remove the old edges
+            G_rand.remove_edges_from([(u, v), (x, y)])
+
+            # Add the new edges
+            G_rand.add_edges_from([(u, y), (x, v)])
+
+            # Update the edges
+            G_rand.edges[idx1] = (u, y)
+            G_rand.edges[idx2] = (x, v)
+
+    return G_rand
+</code></pre><p>Afterwards the assortativity was calculated for each of combination of in-out degree for each pair of nodes.
+<strong>For a node pair where Node A points to Node B:</strong></p><ul><li>In degree of Node A and in degree of Node B: in-in</li><li>Out degree of Node A and in degree of Node B: out-in</li><li>In degree of Node A and out degree of Node B: in-out</li><li>Out degree of Node A and out degree of Node B out-out</li></ul><p>Thise gives the resulting plots:</p><img src=../images/lineplot_R_S.png width=200>
+<img src=../images/column_R_S.png width=200>
+<img src=../images/Closeness_vs_Degree.png width=200><hr class="border-b-2 border-gray-400 mt-8 mx-4"><div class="font-sans flex justify-between content-center px-4 pb-12"><div class=text-left><p><a href=../data-description class="break-normal text-base md:text-sm text-green-500 font-bold no-underline hover:underline">&lt;
 Previous Page</a></p></div><div class=text-right><p><a href=../text-analysis class="break-normal text-base md:text-sm text-green-500 font-bold no-underline hover:underline">Next
 Page ></a></p></div></div></div></div><footer class="bg-white border-t border-gray-400 shadow"><div class="container max-w-4xl mx-auto flex py-8"><div class="w-full mx-auto flex flex-col"><div class="flex w-full"><div class="px-8 mx-auto"><ul class="pt-3 list-none px-0 flex"><li><a class="text-gray-600 no-underline py-2" href=../explainer-notebook.html><i data-feather=file-text class=footer-icon></i></a></li><li><a class="text-gray-600 no-underline py-2" href=https://github.com/MathiasDamsgaard/Comp_Social_Sci_Assignments><i data-feather=github class=footer-icon></i></a></li><li><a class="text-gray-600 no-underline py-2" href="https://drive.google.com/drive/folders/1ds2DuMk6-3qzciHKSTfHVpAQfmKQm407?usp=sharing"><i data-feather=hard-drive class=footer-icon></i></a></li></ul></div></div><div class="w-full mx-auto text-center"><ul class="list-reset items-center text-md py-6 list-none flex"><li class=mx-auto><p class="inline-block text-gray-600 mx-4 font-semibold capitalized">Andreas Søndergaard (s214635)</p></li><li class=mx-auto><p class="inline-block text-gray-600 mx-4 font-semibold capitalized">Anton Mosquera Storgaard (s214611)</p></li><li class=mx-auto><p class="inline-block text-gray-600 mx-4 font-semibold capitalized">Mathias Correll Damsgaard (s214647)</p></li></ul></div></div></div></footer><script>var h=document.documentElement,b=document.body,st="scrollTop",sh="scrollHeight",progress=document.querySelector("#progress"),scroll,scrollpos=window.scrollY,header=document.getElementById("header"),navcontent=document.getElementById("nav-content");document.addEventListener("scroll",function(){scroll=(h[st]||b[st])/((h[sh]||b[sh])-h.clientHeight)*100,progress.style.setProperty("--scroll",scroll+"%"),scrollpos=window.scrollY,scrollpos>10?(header.classList.add("bg-white"),header.classList.add("shadow"),navcontent.classList.remove("bg-gray-100"),navcontent.classList.add("bg-white")):(header.classList.remove("bg-white"),header.classList.remove("shadow"),navcontent.classList.remove("bg-white"),navcontent.classList.add("bg-gray-100"))}),document.getElementById("nav-toggle").onclick=function(){document.getElementById("nav-content").classList.toggle("hidden")},feather.replace()</script></body></html>
