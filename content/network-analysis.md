@@ -72,9 +72,9 @@ Afterwards the assortativity was calculated for each of combination of in-out de
 
 Thise gives the resulting plots:
 
-<img src="/images/lineplot_R_S.png" width="200" />
+<img src="/images/Assortativity_lineplot_R_S.png" width="400" />
 
 
-<img src="/images/column_R_S.png" width="200" />
+<img src="/images/Assortativity_column_R_S.png" width="400" />
 
-<img src="/images/Closeness_vs_Degree.png" width="200" />
+<img src="/images/Closeness_vs_Degree.png" width="400" />
