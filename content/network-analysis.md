@@ -22,10 +22,8 @@ function degree_preserving_randomization( G ):
     """
     Parameters:
     - G: A directed graph.
-
     Returns:
     - G_rand: The degree-preserved randomized graph.
-
     """
     # Create a copy of the graph
     G_rand = copy(G)
@@ -34,7 +32,6 @@ function degree_preserving_randomization( G ):
         idx1, idx2 = random.sample(G_rand.index, 2)
         u, v = G_rand.edges[idx1]
         x, y = G_rand.edges[idx2]
-
         # Ensure distinct nodes
         if lenght(set([u, v, x, y])) < 4:
             continue
