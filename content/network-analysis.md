@@ -9,7 +9,7 @@ As mentioned in the description of the data the network is directed where a pack
 
 Some basic statistics on the network (the largest weakly connect component in the network) are shown below:
 
-´´´
+```
 Number of nodes: 31,304
 Log ( Number of nodes ): 10.35
 Edges: 150,305
@@ -19,8 +19,7 @@ Median degree: 2.0
 Mode degree: 1
 Minimum degree: 1
 Maximum degree: 3,527
-
-´´´
+```
 NOTE: SKRIV NOGET OM DISSE STATS OG HVILKET REGIME NETVÆRKET ER I
 
 To investigate if the PyPi network has meaningfullness it is advisable to generate a set of randomized graphs with the same underlying in- and out-degrees of each individual node in the network. This is to make sure that the assortativity which can be found is not due to any structural feature. Therefore these rules were applied to the randomization. 
@@ -86,6 +85,8 @@ So in the case of the context of the PyPi network this means that when a node A 
 This can also be said in the reverse manner that a Package A with many packages depending on it will be pointed on by a package with few dependencies.
 
 A concrete example could be the package _Numpy_ which has about 3.500 packages depending on it. These packages will generally not be depending on very many other packages. While some other package f.ex. _jupyter-events_ which has only 17 packages depending on it, will be the dependency of packages which depend on more packages. So these 17 packages will depend on more packages.
+
+Also there has been done some interesting analysis in the explainer notebook on degree correlations in this directed graph. This can be read in the Network Analysis section here: [Project.ipynb](https://github.com/MathiasDamsgaard/Comp_Social_Sci_Assignments/blob/main/Project.ipynb).
 
 -----
 
