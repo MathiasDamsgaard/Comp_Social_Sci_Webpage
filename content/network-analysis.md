@@ -7,6 +7,22 @@ The aim of our Network analysis was to find out if the PyPi network had any mean
 
 As mentioned in the description of the data the network is directed where a package points to its dependency.
 
+Some basic statistics on the network (the largest weakly connect component in the network) are shown below:
+
+´´´
+Number of nodes: 31,304
+Log ( Number of nodes ): 10.35
+Edges: 150,305
+Network density: 0.00015
+Average degree: 9.55
+Median degree: 2.0
+Mode degree: 1
+Minimum degree: 1
+Maximum degree: 3,527
+
+´´´
+NOTE: SKRIV NOGET OM DISSE STATS OG HVILKET REGIME NETVÆRKET ER I
+
 To investigate if the PyPi network has meaningfullness it is advisable to generate a set of randomized graphs with the same underlying in- and out-degrees of each individual node in the network. This is to make sure that the assortativity which can be found is not due to any structural feature. Therefore these rules were applied to the randomization. 
 
 1. It should not have multilinks
