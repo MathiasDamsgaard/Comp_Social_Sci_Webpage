@@ -77,4 +77,4 @@ Finally it is also important to look at the relationship between closeness and d
 
 <img src="/images/Closeness_vs_Degree.png" width="800" />
 
-There is a linear relationship between closeness centrality and degree meaning that the higher the degree of a node the closer it is to all other nodes. 
+There is a linear relationship between closeness centrality and degree meaning that the higher the degree of a node the closer it is to all other nodes. So to contextualize this a package such as _numpy_ or _requests_ which both have around 3.500 packages depending on them will both be very central and it would be easy to reach other nodes starting from these nodes. 
