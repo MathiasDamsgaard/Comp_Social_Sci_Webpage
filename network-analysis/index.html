@@ -106,11 +106,8 @@
 </span></span></span><span style=display:flex><span><span style=color:#e6db74>    - G_rand: The degree-preserved randomized graph.
 </span></span></span><span style=display:flex><span><span style=color:#e6db74>
 </span></span></span><span style=display:flex><span><span style=color:#e6db74>    &#34;&#34;&#34;</span>
-</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>    <span style=color:#75715e># Create a copy of the graph</span>
 </span></span><span style=display:flex><span>    G_rand <span style=color:#f92672>=</span> copy(G)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#75715e># For each swap</span>
 </span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> each edge <span style=color:#f92672>in</span> G_rand <span style=color:#f92672>*</span> <span style=color:#ae81ff>10</span>:
 </span></span><span style=display:flex><span>        <span style=color:#75715e># Select two sets of connected</span>
 </span></span><span style=display:flex><span>        idx1, idx2 <span style=color:#f92672>=</span> random<span style=color:#f92672>.</span>sample(G_rand<span style=color:#f92672>.</span>index, <span style=color:#ae81ff>2</span>)
@@ -120,15 +117,10 @@
 </span></span><span style=display:flex><span>        <span style=color:#75715e># Ensure distinct nodes</span>
 </span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> lenght(set([u, v, x, y])) <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>4</span>:
 </span></span><span style=display:flex><span>            <span style=color:#66d9ef>continue</span>
-</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>        <span style=color:#75715e># Ensure that the new edges do not exist</span>
 </span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> x <span style=color:#f92672>not</span> <span style=color:#f92672>in</span> G_rand<span style=color:#f92672>.</span>neighbors(v) <span style=color:#f92672>and</span> y <span style=color:#f92672>not</span> <span style=color:#f92672>in</span> G_rand<span style=color:#f92672>.</span>neighbors(u):
-</span></span><span style=display:flex><span>            
-</span></span><span style=display:flex><span>            G_rand<span style=color:#f92672>.</span>remove_edges_from([(u, v), (x, y)])<span style=color:#75715e># Remove the old edges</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>            G_rand<span style=color:#f92672>.</span>add_edges_from([(u, y), (x, v)])             <span style=color:#75715e># Add the new edges</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>            G_rand<span style=color:#f92672>.</span>remove_edges_from([(u, v), (x, y)]) <span style=color:#75715e># Remove the old edges</span>
+</span></span><span style=display:flex><span>            G_rand<span style=color:#f92672>.</span>add_edges_from([(u, y), (x, v)]) <span style=color:#75715e># Add the new edges</span>
 </span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> G_rand
 </span></span></code></pre></div><p>Afterwards the assortativity was calculated for each of combination of in-out degree for each pair of nodes.
 <strong>For a node pair where Node A points to Node B:</strong></p><ul><li>In degree of Node A and in degree of Node B: in-in</li><li>Out degree of Node A and in degree of Node B: out-in</li><li>In degree of Node A and out degree of Node B: in-out</li><li>Out degree of Node A and out degree of Node B out-out</li></ul><p>This gives the resulting plots:</p><img src=../images/Assortativity_lineplot_R_S.png width=800><p>The out-in assortativity of the random graphs show that there is some structural disassortativity in the graph structure however this does not explain the even higher amount of disassortativity of out-in nodes.
