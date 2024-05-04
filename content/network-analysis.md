@@ -17,7 +17,7 @@ This randomization (which is also known as R-S randomization which is used to ge
 
 The pseudocode is provided below: 
 
-```
+```python
 function degree_preserving_randomization( G ):
     """
     Perform degree-preserving randomization of a directed graph.
