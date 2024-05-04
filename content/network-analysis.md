@@ -27,11 +27,8 @@ function degree_preserving_randomization( G ):
     - G_rand: The degree-preserved randomized graph.
 
     """
-
     # Create a copy of the graph
     G_rand = copy(G)
-
-    # For each swap
     for each edge in G_rand * 10:
         # Select two sets of connected
         idx1, idx2 = random.sample(G_rand.index, 2)
@@ -41,15 +38,10 @@ function degree_preserving_randomization( G ):
         # Ensure distinct nodes
         if lenght(set([u, v, x, y])) < 4:
             continue
-
         # Ensure that the new edges do not exist
         if x not in G_rand.neighbors(v) and y not in G_rand.neighbors(u):
-            
-            G_rand.remove_edges_from([(u, v), (x, y)])# Remove the old edges
-
-            G_rand.add_edges_from([(u, y), (x, v)])             # Add the new edges
-
-
+            G_rand.remove_edges_from([(u, v), (x, y)]) # Remove the old edges
+            G_rand.add_edges_from([(u, y), (x, v)]) # Add the new edges
     return G_rand
 
 ```
