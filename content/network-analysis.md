@@ -20,7 +20,8 @@ Mode degree: 1
 Minimum degree: 1
 Maximum degree: 3,527
 ```
-NOTE: SKRIV NOGET OM DISSE STATS OG HVILKET REGIME NETVÆRKET ER I
+
+The average number of dependencies a package has is 9.55, while most of the packages only have just 1 connection, and other packages are large hubs of thousands connections. Furthermore log(N) is higher than the average degree. This means that the network falls into to supercritical network regime.
 
 To investigate if the PyPi network has meaningfullness it is advisable to generate a set of randomized graphs with the same underlying in- and out-degrees of each individual node in the network. This is to make sure that the assortativity which can be found is not due to any structural feature. Therefore these rules were applied to the randomization. 
 
