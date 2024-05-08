@@ -7,7 +7,7 @@ The aim of our Network analysis was to find out if the PyPi network had any mean
 
 As mentioned in the description of the data the network is directed where a package points to its dependency.
 
-Some basic statistics on the network (the largest weakly connect component in the network) are shown below:
+Some basic statistics on the network (the largest weakly connect component in the whole network) are shown below:
 
 ```
 Number of nodes: 31,304
@@ -22,15 +22,12 @@ Maximum degree: 3,527
 ```
 NOTE: SKRIV NOGET OM DISSE STATS OG HVILKET REGIME NETVÆRKET ER I
 
-To investigate if the PyPi network has meaningfullness it is advisable to generate a set of randomized graphs with the same underlying in- and out-degrees of each individual node in the network. This is to make sure that the assortativity which can be found is not due to any structural feature. Therefore these rules were applied to the randomization. 
-
+To investigate if the PyPi network has meaningfullness it is advisable to generate a set of randomized graphs with the same underlying in- and out-degrees of each individual node in the network. This is to make sure that the calculated assortativity is not due to any structural features. Therefore, these rules were applied to the randomization. 
 1. It should not have multilinks
 2. It should not have self-loops
 3. It should let the in- and out-degree stay the same during node swapping
 
-This randomization (which is also known as R-S randomization which is used to generate simple networks) was applied and 50 random graphs were generated. 
-
-The pseudocode is provided below: 
+This randomization, also known as R-S randomization, was used to generate 50 simple random networks. The pseudocode is provided below: 
 
 ```python
 function degree_preserving_randomization( G ):
@@ -65,12 +62,12 @@ Afterwards the assortativity was calculated for each of combination of in-out de
 * In degree of Node A and out degree of Node B: in-out
 * Out degree of Node A and out degree of Node B out-out
 
-This gives the resulting plots:
+This gives the resulting plot:
 
 <img src="/images/Assortativity_lineplot_R_S.png" width="800" />
 
-The out-in assortativity of the random graphs show that there is some structural disassortativity in the graph structure however this does not explain the even higher amount of disassortativity of out-in nodes.
- The other types of assortativity appear to be neutral according to the random graphs. However the out-out degree does also display some assortativity. Below there is another plot of the disassortativity:
+The out-in assortativity of the random graphs show that there is some structural disassortativity in the graph structure, though this does not explain the even higher amount of disassortativity of out-in nodes.
+The other types of assortativity appear to be neutral according to the random graphs. However, the out-out degree does also display some assortativity. Below there is another plot of the disassortativity:
 
 <img src="/images/Assortativity_column_R_S.png" width="800" />
 
@@ -80,18 +77,24 @@ This means that the PyPi network dissplays very clear disassortativity in out-in
 
 **What are the implications of this?**
 
-So in the case of the context of the PyPi network this means that when a node A with many dependencies is linked to a node B that will generally have fewer packages depending on it. 
+So in the case of the context of the PyPi network this means that when a package A with many dependencies is linked to a package B that package will generally have fewer packages depending on it. This can also be said in the reverse manner that a package A with many packages depending on it will be pointed on by a package with few dependencies.
 
-This can also be said in the reverse manner that a Package A with many packages depending on it will be pointed on by a package with few dependencies.
-
-A concrete example could be the package _Numpy_ which has about 3.500 packages depending on it. These packages will generally not be depending on very many other packages. While some other package f.ex. _jupyter-events_ which has only 17 packages depending on it, will be the dependency of packages which depend on more packages. So these 17 packages will depend on more packages.
+A concrete example could be the package _numpy_ which has about 3.500 packages depending on it. These packages will generally not be depending on many other packages. While some other package e.g. _jupyter-events_ with only 17 packages depending on it, will be the dependency of packages, which depend on more packages. So these 17 packages will depend on more packages.
 
 Also there has been done some interesting analysis in the explainer notebook on degree correlations in this directed graph. This can be read in the Network Analysis section here: [Project.ipynb](https://github.com/MathiasDamsgaard/Comp_Social_Sci_Assignments/blob/main/Project.ipynb).
 
 -----
 
-Finally it is also important to look at the relationship between closeness and degree of the nodes:
+Additionally, it is also interesting to look at the relationship between closeness and degree of the nodes in the network:
 
 <img src="/images/Closeness_vs_Degree.png" width="800" />
 
-There is a linear relationship between closeness centrality and degree meaning that the higher the degree of a node the closer it is to all other nodes. So to contextualize this a package such as _numpy_ or _requests_ which both have around 3.500 packages depending on them will both be very central and it would be easy to reach other nodes starting from these nodes. 
+There is a linear relationship between closeness centrality and degree, meaning that the higher the degree of a node the closer it is to all other nodes. So to contextualize this, a package as _numpy_ or _requests_ which both have around 3.500 packages depending on them will both be very central and it would be easy to reach other nodes starting from these nodes.
+
+-----
+
+To conclude on the network analysis a comparison to the origininal analysis by [Kevin Gullikson](https://kgullikson88.github.io/blog/pypi-analysis.html) will be made, looking at the distribution of the degree count on the top packages in the network. Considering the two plots below, it is clear that there definitely have been changes in the number of dependencies on the packages on PyPi over the last 8 years. Especially **numpy, pandas and matplotlib** have significantly increased and for _numpy_ specifically it is approximately by 200%. On the other hand, a package as _six_, which is a compatibility library between Python 2 and 3, have barely changed at all. This change also makes sense, as machine learning and artificial intelligence have seen a big increase in popularity over the last couple of years. Lastly, _django_ is no longer to be found. However, it is present in the network, so it is possible that its relevance in general have decreased.
+
+<img src="/images/Degree_comparison.png" width="800" />
+
+A sidenote is on the package _peppercorn_. It is a package that is the only requirement in a project called [**sampleproject**](https://github.com/pypa/sampleproject). Unfortuntely, many pacakges link to this repository on their PyPi page. We still included the packages for the additional degree distibution relevance they could have, but in this case the package can be ignore.
