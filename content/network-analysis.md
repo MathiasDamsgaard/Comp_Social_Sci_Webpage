@@ -68,11 +68,9 @@ This gives the resulting plot:
 <img src="/images/Assortativity_lineplot_R_S.png" width="800" />
 
 The out-in assortativity of the random graphs show that there is some structural disassortativity in the graph structure, though this does not explain the even higher amount of disassortativity of out-in nodes.
-The other types of assortativity appear to be neutral according to the random graphs. However, the out-out degree does also display some assortativity. Below there is another plot of the disassortativity:
+The other types of assortativity appear to be neutral according to the random graphs. However, the out-out degree does also display some assortativity.
 
-<img src="/images/Assortativity_column_R_S.png" width="800" />
-
-This plot shows that the random graphs are generelly distributed in the same way while the PyPi network is significantly different. Recall that there's 50 random models so it can be assumed that they would follow the central limit theorem. Their standard deviation is not high enough to encompass the PyPi network. I.e. the PyPi network is statistically significantly different from the random networks. 
+The plot shows that the random graphs are generelly distributed in the same way while the PyPi network is significantly different. Recall that there's 50 random models so it can be assumed that they would follow the central limit theorem. Their standard deviation is not high enough to encompass the PyPi network. I.e. the PyPi network is statistically significantly different from the random networks. 
 
 This means that the PyPi network dissplays very clear disassortativity in out-in degree.
 
