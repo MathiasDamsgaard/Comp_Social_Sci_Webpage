@@ -7,7 +7,7 @@ The aim of our Network analysis was to find out if the PyPi network had any mean
 
 As mentioned in the description of the data the network is directed where a package points to its dependency.
 
-Some basic statistics on the network (the largest weakly connect component in the whole network) are shown below:
+Some basic statistics on the network's largest weakly connect component are shown below:
 
 ```
 Number of nodes: 31,304
@@ -21,7 +21,11 @@ Minimum degree: 1
 Maximum degree: 3,527
 ```
 
-The average number of dependencies a package has is 9.55, while most of the packages only have just 1 connection, and other packages are large hubs of thousands connections. Furthermore log(N) is higher than the average degree. This means that the network falls into to supercritical network regime.
+This subgraph encompass almost all nodes in the network. The average number of dependencies a package has is 9.55, while most of the packages only have just 1 connection, and other packages are large hubs of thousands connections. Furthermore log(N) is higher than the average degree. This means that the network falls into to supercritical network regime.
+
+By using an external tool called [Cosmograph](https://cosmograph.app/) a sensible and manageable plot of the entire network was made from the edge list. Here it is possible to see how groups have formed in the network, and gives reason to why it makes sense that the largest component continue to stay very close to the size of the original network. The color of the nodes are scaled to the number of total links a nodes has. The majority of the nodes are collected in the center of the big cluster, and in here packages as _requests, numpy, pandas_ and more can be found.
+
+<img src="/images/cosmograph.png" heigth="600" />
 
 To investigate if the PyPi network has meaningfullness it is advisable to generate a set of randomized graphs with the same underlying in- and out-degrees of each individual node in the network. This is to make sure that the calculated assortativity is not due to any structural features. Therefore, these rules were applied to the randomization. 
 1. It should not have multilinks
@@ -80,7 +84,7 @@ So in the case of the context of the PyPi network this means that when a package
 
 A concrete example could be the package _numpy_ which has about 3.500 packages depending on it. These packages will generally not be depending on many other packages. While some other package e.g. _jupyter-events_ with only 17 packages depending on it, will be the dependency of packages, which depend on more packages. So these 17 packages will depend on more packages.
 
-Also there has been done some interesting analysis in the explainer notebook on degree correlations in this directed graph. This can be read in the Network Analysis section here: [Project.ipynb](https://github.com/MathiasDamsgaard/Comp_Social_Sci_Assignments/blob/main/Project.ipynb).
+Also there has been done some interesting analysis in the [explainer notebook](explainer-notebook.html) on degree correlations in this directed graph under the Network Analysis section.
 
 -----
 
